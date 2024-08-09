@@ -8,7 +8,6 @@ $(function () {
 
    
 $('.banner_slider').slick({
-    dots: true,
     infinite: true,
     speed: 300,
     slidesToShow: 1,
@@ -17,48 +16,44 @@ $('.banner_slider').slick({
   });
 
 
-  
-  
 
-  $('.project-slider').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    dots: true,
-    infinite: true,
-    speed: 800,
-    autoplaySpeed: 2000,
-    prevArrow:'.left-arrow',
-    nextArrow:'.right-arrow',
-  
-  });
-  
+});
 
-  $('.venobox').venobox();
+$(function () {
+  "use strict";
 
-  $('.testimonial_content').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    dots: false,
-    infinite: true,
-    speed: 800,
-    autoplaySpeed: 2000,
-    prevArrow:'.left-arrow',
-    nextArrow:'.right-arrow',
+  // Initialize Isotope
+  var $portfolioIsotope = $('.portfolio-active').isotope({
+      itemSelector: '.portfolio',
+      percentPosition: true,
+      masonry: {
+          columnWidth: '.portfolio' // or set a specific width if needed
+      }
   });
 
-   
+  // Filter Items on Click
+  $('.portfolio_menu .menu li').click(function () {
+      $('.portfolio_menu .menu li').removeClass('active');
+      $(this).addClass('active');
 
-  
-
-
+      var selector = $(this).attr('data-filter');
+      $portfolioIsotope.isotope({
+          filter: selector
+      });
+      return false; // Prevent default link behavior
+  });
 });
 
 
 
-
-
-
-
-
+$('.brand_slider').slick({
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  autoplay: true,
+  dots: false,
+  infinite: true,
+  speed: 800,
+  autoplaySpeed: 2000,
+  prevArrow:false,
+  nextArrow:false,
+});
